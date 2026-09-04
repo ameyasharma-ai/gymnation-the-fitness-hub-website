@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gymnation The Fitness Hub | Premier Gym in Athwa, Surat</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgBase: '#0A0A0C',
+                        surface: '#141418',
+                        accent: '#00FF66',
+                        secondary: '#1A1A22',
+                        textPrimary: '#FFFFFF',
+                        textMuted: '#9CA3AF',
+                        brandGreenHover: '#34D399',
+                    },
+                    fontFamily: {
+                        syne: ['Syne', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: #0A0A0C;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Syne', sans-serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A22;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00FF66;
+        }
+    </style>
+</head>
+<body class="bg-bgBase text-textPrimary overflow-x-hidden pb-24 md:pb-0">
+
+    <!-- 1. ANNOUNCEMENT BAR & STICKY HEADER -->
+    <div class="bg-accent text-black font-semibold text-xs sm:text-sm py-2 px-4 text-center tracking-wide flex items-center justify-center gap-2">
+        <i data-lucide="clock" class="w-4 h-4 shrink-0"></i>
+        <span>Open Today: 6:00 AM - 10:00 PM • Bhatar Road, Surat</span>
+    </div>
+
+    <header class="sticky top-0 z-40 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800/80 transition-all duration-300">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-black font-syne font-black text-xl shadow-[0_0_15px_rgba(0,255,102,0.4)] group-hover:scale-105 transition-transform">
+                    G
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-syne font-extrabold text-lg sm:text-xl tracking-tight leading-none text-white">GYMNATION</span>
+                    <span class="text-[10px] sm:text-xs text-accent tracking-widest uppercase font-semibold">The Fitness Hub</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-textMuted">
+                <a href="#services" class="hover:text-accent transition-colors">Services</a>
+                <a href="#why-us" class="hover:text-accent transition-colors">Why Us</a>
+                <a href="#about" class="hover:text-accent transition-colors">About</a>
+                <a href="#gallery" class="hover:text-accent transition-colors">Gallery</a>
+                <a href="#reviews" class="hover:text-accent transition-colors">Reviews</a>
+                <a href="#faq" class="hover:text-accent transition-colors">FAQ</a>
+                <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+            </nav>
+
+            <!-- Desktop Action Buttons -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="https://wa.me/918511031349?text=Hi%20Gymnation,%20I%20want%20to%20know%20more%20about%20membership%20plans!" target="_blank" class="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent hover:bg-zinc-800 transition-all">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                </a>
+                <a href="#contact" class="bg-accent text-black font-semibold px-5 py-2.5 rounded-xl text-sm flex items-center gap-2 hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(0,255,102,0.3)]">
+                    <i data-lucide="zap" class="w-4 h-4"></i>
+                    <span>Free Trial</span>
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" aria-label="Toggle Navigation Menu" class="lg:hidden w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="fixed inset-x-0 top-20 bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-800 py-6 px-6 hidden flex-col gap-5 lg:hidden shadow-2xl z-50 transition-all">
+            <a href="#services" class="mobile-link text-lg font-medium text-textMuted hover:text-accent">Services</a>
+            <a href="#why-us" class="mobile-link text-lg font-medium text-textMuted hover:text-accent">Why Us</a>
+            <a href="#about" class="mobile-link text-lg font-medium text-textMuted hover:text-accent">About</a>
+            <a href="#gallery" class="mobile-link text-lg font-medium text-textMuted hover:text-accent">Gallery</a>
+            <a href="#reviews" class="mobile-link text-lg font-medium text-textMuted hover:text-accent">Reviews</a>
+            <a href="#faq" class="mobile-link text-lg font-medium text-textMuted hover:text-accent">FAQ</a>
+            <a href="#contact" class="mobile-link text-lg font-medium text-textMuted hover:text-accent">Contact Us</a>
+            <div class="pt-4 border-t border-zinc-800 flex flex-col gap-3">
+                <a href="tel:+918511031349" class="w-full py-3 rounded-xl bg-zinc-900 text-white font-semibold flex items-center justify-center gap-2 border border-zinc-800">
+                    <i data-lucide="phone" class="w-4 h-4 text-accent"></i> Call +91 85110 31349
+                </a>
+                <a href="https://wa.me/918511031349?text=Hi%20Gymnation,%20I%20want%20to%20claim%20my%20free%20trial!" target="_blank" class="w-full py-3 rounded-xl bg-accent text-black font-semibold flex items-center justify-center gap-2">
+                    <i data-lucide="message-square" class="w-4 h-4"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="relative pt-12 pb-20 md:pt-24 md:pb-32 overflow-hidden">
+        <!-- Ambient Glow Backdrops -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[600px] h-[350px] md:h-[600px] bg-accent/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start">
+                    
+                    <!-- Rating Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface border border-zinc-800 text-xs sm:text-sm mb-6">
+                        <div class="flex text-amber-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        </div>
+                        <span class="text-white font-semibold">4.5★ Rating</span>
+                        <span class="text-textMuted">• 225+ Google Reviews</span>
+                    </div>
+
+                    <!-- Main H1 Heading -->
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-syne font-extrabold tracking-tight leading-[1.1] mb-6">
+                        Unleash Your <span class="text-accent underline decoration-accent/40 decoration-wavy underline-offset-8">Peak Performance</span> at Gymnation
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-textMuted max-w-2xl mb-8 leading-relaxed">
+                        Surat’s premier elite fitness destination featuring state-of-the-art strength training equipment, certified expert coaches, and high-energy workout zones located right on Bhatar Road.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-accent text-black font-bold text-base hover:bg-emerald-400 transition-all flex items-center justify-center gap-3 shadow-[0_0_25px_rgba(0,255,102,0.4)]">
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                            <span>Claim Free Trial</span>
+                        </a>
+                        <a href="https://wa.me/918511031349?text=Hi%20Gymnation,%20I%20want%20to%20chat%20about%20gym%20membership!" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-surface border border-zinc-800 text-white font-semibold text-base hover:bg-zinc-900 transition-all flex items-center justify-center gap-3">
+                            <i data-lucide="message-square" class="w-5 h-5 text-accent"></i>
+                            <span>Chat on WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Highlights -->
+                    <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-zinc-800/80 w-full max-w-lg">
+                        <div>
+                            <div class="font-syne font-bold text-2xl sm:text-3xl text-white">100%</div>
+                            <div class="text-xs sm:text-sm text-textMuted mt-0.5">Modern Gear</div>
+                        </div>
+                        <div>
+                            <div class="font-syne font-bold text-2xl sm:text-3xl text-white">Expert</div>
+                            <div class="text-xs sm:text-sm text-textMuted mt-0.5">Trainers</div>
+                        </div>
+                        <div>
+                            <div class="font-syne font-bold text-2xl sm:text-3xl text-white">Athwa</div>
+                            <div class="text-xs sm:text-sm text-textMuted mt-0.5">Prime Location</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual Card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl group">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Gymnation Gym Floor Surat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-bgBase via-transparent to-transparent"></div>
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-surface/90 backdrop-blur-md border border-zinc-800 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center text-accent shrink-0">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-syne font-bold text-white text-sm">Surat's Trusted Hub</h4>
+                                <p class="text-xs text-textMuted">Open Mon-Sat: 6 AM - 10 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TRUST & SOCIAL PROOF BAR -->
+    <section class="border-y border-zinc-800/80 bg-zinc-950/40 py-8">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4">
+                    <div class="font-syne font-extrabold text-3xl sm:text-4xl text-accent mb-1">4.5★</div>
+                    <div class="text-xs sm:text-sm text-textMuted font-medium">Google Rating Score</div>
+                </div>
+                <div class="p-4">
+                    <div class="font-syne font-extrabold text-3xl sm:text-4xl text-white mb-1">225+</div>
+                    <div class="text-xs sm:text-sm text-textMuted font-medium">Verified Customer Reviews</div>
+                </div>
+                <div class="p-4">
+                    <div class="font-syne font-extrabold text-3xl sm:text-4xl text-white mb-1">Athwa</div>
+                    <div class="text-xs sm:text-sm text-textMuted font-medium">Prime Surat Location</div>
+                </div>
+                <div class="p-4">
+                    <div class="font-syne font-extrabold text-3xl sm:text-4xl text-accent mb-1">16 Hrs</div>
+                    <div class="text-xs sm:text-sm text-textMuted font-medium">Daily Access (6 AM - 10 PM)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SERVICES / OFFERINGS GRID -->
+    <section id="services" class="py-20 md:py-32">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3.5 py-1.5 rounded-full bg-surface border border-zinc-800 text-xs font-semibold text-accent mb-4 tracking-wider uppercase">
+                    Our Core Programs
+                </div>
+                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl mb-6">Designed For Extreme Results</h2>
+                <p class="text-textMuted text-base sm:text-lg">Whether you want to build raw strength, torch body fat, or reshape your physique, we have the specialized zones and trainers for you.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-surface border border-zinc-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition-all group">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-black transition-all">
+                            <i data-lucide="dumbbell" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-syne font-bold text-xl text-white mb-3">Strength Training</h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">Heavy-duty racks, Olympic barbells, plate-loaded machines, and full dumbbell sets to build solid muscle mass.</p>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-accent group-hover:underline">
+                        <span>Book Trial Session</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-surface border border-zinc-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition-all group">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-black transition-all">
+                            <i data-lucide="user-check" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-syne font-bold text-xl text-white mb-3">Personal Training</h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">One-on-one custom workout planning, posture correction, and diet guidance from elite certified coaches.</p>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-accent group-hover:underline">
+                        <span>Book Trial Session</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-surface border border-zinc-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition-all group">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-black transition-all">
+                            <i data-lucide="activity" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-syne font-bold text-xl text-white mb-3">Cardio Zone</h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">Advanced treadmills, ellipticals, and stationary bikes equipped with heart-rate trackers to boost endurance.</p>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-accent group-hover:underline">
+                        <span>Book Trial Session</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-surface border border-zinc-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition-all group">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-black transition-all">
+                            <i data-lucide="flame" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-syne font-bold text-xl text-white mb-3">Weight Management</h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">Targeted fat-loss programs, high-intensity circuit workouts, and metabolic conditioning routines.</p>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-accent group-hover:underline">
+                        <span>Book Trial Session</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. WHY CHOOSE US SECTION -->
+    <section id="why-us" class="py-20 md:py-32 bg-zinc-950/60 border-y border-zinc-800/80">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3.5 py-1.5 rounded-full bg-surface border border-zinc-800 text-xs font-semibold text-accent mb-4 tracking-wider uppercase">
+                    The Gymnation Edge
+                </div>
+                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl mb-6">Why Surat Fitness Enthusiasts Choose Us</h2>
+                <p class="text-textMuted text-base sm:text-lg">We provide a premium, clean, high-energy environment designed to help you crush your fitness milestones.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-surface border border-zinc-800 p-8 rounded-2xl relative overflow-hidden">
+                    <div class="text-accent/20 font-syne font-black text-6xl absolute top-4 right-4 pointer-events-none">01</div>
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-6">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-syne font-bold text-xl text-white mb-3">State-of-the-Art Gear</h3>
+                    <p class="text-textMuted text-sm leading-relaxed">Top-tier ergonomic machines and imported weights maintained for maximum safety and performance.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-surface border border-zinc-800 p-8 rounded-2xl relative overflow-hidden">
+                    <div class="text-accent/20 font-syne font-black text-6xl absolute top-4 right-4 pointer-events-none">02</div>
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-6">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-syne font-bold text-xl text-white mb-3">Expert Coaches</h3>
+                    <p class="text-textMuted text-sm leading-relaxed">Certified trainers dedicated to personalized form coaching, motivation, and result tracking.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-surface border border-zinc-800 p-8 rounded-2xl relative overflow-hidden">
+                    <div class="text-accent/20 font-syne font-black text-6xl absolute top-4 right-4 pointer-events-none">03</div>
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-6">
+                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-syne font-bold text-xl text-white mb-3">Prime Location</h3>
+                    <p class="text-textMuted text-sm leading-relaxed">Centrally located on Bhatar Road, Athwa, Surat with ample parking space and easy accessibility.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-surface border border-zinc-800 p-8 rounded-2xl relative overflow-hidden">
+                    <div class="text-accent/20 font-syne font-black text-6xl absolute top-4 right-4 pointer-events-none">04</div>
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-6">
+                        <i data-lucide="clock" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-syne font-bold text-xl text-white mb-3">Flexible Timings</h3>
+                    <p class="text-textMuted text-sm leading-relaxed">Open 16 hours a day from 6:00 AM to 10:00 PM (Mon-Sat) to fit into your busy schedule.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ABOUT / STORY SECTION -->
+    <section id="about" class="py-20 md:py-32">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Image Side -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80" alt="Gymnation Interior Surat" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-surface border border-zinc-800 p-6 rounded-2xl hidden sm:block shadow-xl max-w-xs">
+                        <div class="font-syne font-extrabold text-3xl text-accent mb-1">225+ Reviews</div>
+                        <p class="text-xs text-textMuted">Rated 4.5 Stars by dedicated members across Surat.</p>
+                    </div>
+                </div>
+
+                <!-- Text Content Side -->
+                <div class="lg:col-span-6">
+                    <div class="inline-block px-3.5 py-1.5 rounded-full bg-surface border border-zinc-800 text-xs font-semibold text-accent mb-4 tracking-wider uppercase">
+                        About Gymnation
+                    </div>
+                    <h2 class="font-syne font-extrabold text-3xl sm:text-5xl mb-6">Building Stronger Bodies in Athwa, Surat</h2>
+                    <p class="text-textMuted text-base sm:text-lg leading-relaxed mb-6">
+                        Located on the 2nd floor of Sheetal Shopping Centre on Bhatar Road, Gymnation The Fitness Hub is more than just a gym—it's a community of driven individuals pushing past their limits.
+                    </p>
+                    <p class="text-textMuted text-base sm:text-lg leading-relaxed mb-8">
+                        Whether you are a complete beginner stepping into a gym for the first time or an experienced athlete preparing for a competition, our facility offers clean, well-maintained equipment and professional trainers to guide your transformation.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-accent">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-semibold text-sm text-white">Hygienic Environment</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-accent">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-semibold text-sm text-white">Air-Conditioned Floor</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-accent">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-semibold text-sm text-white">Locker Facilities</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-accent">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-semibold text-sm text-white">Expert Guidance</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3.5 rounded-xl text-base hover:bg-emerald-400 transition-all">
+                        <span>Visit Us Today</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. INTERACTIVE SHOWCASE / GALLERY -->
+    <section id="gallery" class="py-20 md:py-32 bg-zinc-950/60 border-y border-zinc-800/80">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3.5 py-1.5 rounded-full bg-surface border border-zinc-800 text-xs font-semibold text-accent mb-4 tracking-wider uppercase">
+                    Gym Floor Showcase
+                </div>
+                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl mb-6">Take A Visual Tour</h2>
+                <p class="text-textMuted text-base sm:text-lg">Explore our spacious workout zones, heavy weights area, and premium cardio section.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 group relative">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80" alt="Gym Workout" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-bgBase/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <span class="font-syne font-bold text-white text-lg">Strength & Conditioning Zone</span>
+                    </div>
+                </div>
+                <div class="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 group relative">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Dumbbell Rack" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-bgBase/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <span class="font-syne font-bold text-white text-lg">Free Weights & Dumbbells</span>
+                    </div>
+                </div>
+                <div class="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 group relative">
+                    <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80" alt="Cardio Equipment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-bgBase/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <span class="font-syne font-bold text-white text-lg">Cardio Training Area</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="py-20 md:py-32">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3.5 py-1.5 rounded-full bg-surface border border-zinc-800 text-xs font-semibold text-accent mb-4 tracking-wider uppercase">
+                    Google Reviews (4.5★)
+                </div>
+                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl mb-6">What Our Members Say</h2>
+                <p class="text-textMuted text-base sm:text-lg">Real feedback from 225+ satisfied fitness members training with us at Athwa, Surat.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-surface border border-zinc-800/80 p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        </div>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">"One of the best gyms on Bhatar Road. Excellent equipment quality and very knowledgeable trainers. The atmosphere pushes you to do your best every single day."</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-zinc-800">
+                        <div class="w-10 h-10 rounded-full bg-accent text-black font-syne font-bold flex items-center justify-center">
+                            YD
+                        </div>
+                        <div>
+                            <h4 class="font-syne font-bold text-white text-sm">Yash Desai</h4>
+                            <p class="text-xs text-textMuted">Google Local Guide</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-surface border border-zinc-800/80 p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        </div>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">"Great ambiance and proper ventilation. Trainers pay personal attention to form and diet. Highly recommend Gymnation for anyone serious about their fitness goals in Athwa."</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-zinc-800">
+                        <div class="w-10 h-10 rounded-full bg-accent text-black font-syne font-bold flex items-center justify-center">
+                            RP
+                        </div>
+                        <div>
+                            <h4 class="font-syne font-bold text-white text-sm">Rohan Patel</h4>
+                            <p class="text-xs text-textMuted">Verified Member</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-surface border border-zinc-800/80 p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        </div>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">"Very convenient timings (opens at 6 AM) and well-maintained weights. The staff is courteous and helpful. Best fitness hub in this area of Surat!"</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-zinc-800">
+                        <div class="w-10 h-10 rounded-full bg-accent text-black font-syne font-bold flex items-center justify-center">
+                            NS
+                        </div>
+                        <div>
+                            <h4 class="font-syne font-bold text-white text-sm">Nisha Shah</h4>
+                            <p class="text-xs text-textMuted">Verified Member</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. FAQ ACCORDION -->
+    <section id="faq" class="py-20 md:py-32 bg-zinc-950/60 border-y border-zinc-800/80">
+        <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3.5 py-1.5 rounded-full bg-surface border border-zinc-800 text-xs font-semibold text-accent mb-4 tracking-wider uppercase">
+                    Got Questions?
+                </div>
+                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl mb-6">Frequently Asked Questions</h2>
+                <p class="text-textMuted text-base sm:text-lg">Everything you need to know about joining Gymnation The Fitness Hub.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-surface border border-zinc-800 rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-syne font-bold text-lg flex items-center justify-between gap-4 focus:outline-none">
+                        <span>What are the operating hours of Gymnation?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-accent transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-textMuted text-sm leading-relaxed">
+                        We are open from Monday to Saturday, 6:00 AM to 10:00 PM. We provide ample time slots so you can work out comfortably around your daily schedule.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-surface border border-zinc-800 rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-syne font-bold text-lg flex items-center justify-between gap-4 focus:outline-none">
+                        <span>Where is Gymnation located in Surat?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-accent transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-textMuted text-sm leading-relaxed">
+                        We are located on the 2nd floor, Sheetal Shopping Centre, Shop No. 1 to 7, Bhatar Rd, beside Turning Point Complex, IOC Colony, Subhash Nagar, Athwa, Surat, Gujarat 395001.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-surface border border-zinc-800 rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-syne font-bold text-lg flex items-center justify-between gap-4 focus:outline-none">
+                        <span>Do you provide personal trainers for beginners?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-accent transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-textMuted text-sm leading-relaxed">
+                        Yes! We have certified professional personal trainers who specialize in working with beginners to ensure proper posture, safe lifting techniques, and customized diet plans.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-surface border border-zinc-800 rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-syne font-bold text-lg flex items-center justify-between gap-4 focus:outline-none">
+                        <span>How can I claim a free trial session?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-accent transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-textMuted text-sm leading-relaxed">
+                        You can easily fill out our trial booking form on this website or tap the WhatsApp button to instantly chat with our team and schedule your free trial tour.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. INTERACTIVE LOCATION & CONTACT SECTION -->
+    <section id="contact" class="py-20 md:py-32">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3.5 py-1.5 rounded-full bg-surface border border-zinc-800 text-xs font-semibold text-accent mb-4 tracking-wider uppercase">
+                    Get In Touch
+                </div>
+                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl mb-6">Start Your Fitness Journey Today</h2>
+                <p class="text-textMuted text-base sm:text-lg">Book your free trial session or drop by our facility on Bhatar Road.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Left: Contact Form -->
+                <div class="lg:col-span-6 bg-surface border border-zinc-800 p-8 rounded-3xl">
+                    <h3 class="font-syne font-bold text-2xl text-white mb-2">Claim Your Free Trial</h3>
+                    <p class="text-textMuted text-sm mb-6">Fill in your details below and our team will get in touch instantly.</p>
+                    
+                    <form id="trial-form" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-textMuted mb-2">Full Name</label>
+                            <input type="text" id="name" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors" placeholder="e.g. Rahul Sharma">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-textMuted mb-2">Phone Number</label>
+                            <input type="tel" id="phone" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors" placeholder="e.g. +91 98765 43210">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-textMuted mb-2">Interested Service</label>
+                            <select id="service" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors">
+                                <option>Strength Training</option>
+                                <option>Personal Training</option>
+                                <option>Cardio Zone</option>
+                                <option>Weight Management</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-textMuted mb-2">Message (Optional)</label>
+                            <textarea id="message" rows="3" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors" placeholder="Any specific fitness goals or preferred time?"></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl bg-accent text-black font-bold text-base hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,255,102,0.3)]">
+                            <span id="btn-text">Submit Trial Request</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right: Map & Details -->
+                <div class="lg:col-span-6 flex flex-col gap-6">
+                    <!-- Details Card -->
+                    <div class="bg-surface border border-zinc-800 p-8 rounded-3xl flex flex-col gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-syne font-bold text-white text-base mb-1">Location Address</h4>
+                                <p class="text-textMuted text-sm leading-relaxed">2nd floor, Sheetal Shopping Centre, Shop No. 1 to 7, Bhatar Rd, beside Turning Point Complex, IOC Colony, Subhash Nagar, Athwa, Surat, Gujarat 395001</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+                                <i data-lucide="phone-call" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-syne font-bold text-white text-base mb-1">Phone / WhatsApp</h4>
+                                <a href="tel:+918511031349" class="text-textMuted text-sm hover:text-accent transition-colors">+08511031349</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-syne font-bold text-white text-base mb-1">Operating Hours</h4>
+                                <p class="text-textMuted text-sm">Monday – Saturday: 6:00 AM – 10:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Maps Embed -->
+                    <div class="relative w-full h-[250px] rounded-3xl overflow-hidden border border-zinc-800">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.6644265438817!2d72.8176487!3d21.1754722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e12b5559c9f%3A0x8e2fa90efed05ee5!2sGymnation%20The%20Fitness%20Hub!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    
+                    <a href="https://www.google.com/maps/place/Gymnation+The+Fitness+Hub/data=!4m7!3m6!1s0x3be04e12b5559c9f:0x8e2fa90efed05ee5!8m2!3d21.1754722!4d72.8176487!16s%2Fg%2F11c3vz922w!19sChIJn5xVtRJO4DsR5V7Q_g6pL44?authuser=0&hl=en&g_ep=EgoyMDI2MDkwMS4wIJJjKgBIAVAD&rclk=1" target="_blank" class="w-full py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-semibold flex items-center justify-center gap-2 hover:bg-zinc-800 transition-all">
+                        <i data-lucide="navigation" class="w-4 h-4 text-accent"></i> Get Directions on Google Maps
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. STICKY MOBILE ACTION BAR -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-lg border-t border-zinc-800 p-3 flex gap-3">
+        <a href="tel:+918511031349" class="flex-1 py-3 px-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold text-sm flex items-center justify-center gap-2">
+            <i data-lucide="phone" class="w-4 h-4 text-accent"></i> Call Now
+        </a>
+        <a href="https://wa.me/918511031349?text=Hi%20Gymnation,%20I%20want%20to%20inquire%20about%20gym%20membership!" target="_blank" class="flex-1 py-3 px-4 rounded-xl bg-accent text-black font-bold text-sm flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,255,102,0.4)]">
+            <i data-lucide="message-square" class="w-4 h-4"></i> WhatsApp
+        </a>
+    </div>
+
+    <!-- 12. FOOTER -->
+    <footer class="bg-zinc-950 border-t border-zinc-800 py-16">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Brand Col -->
+                <div>
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <div class="w-9 h-9 rounded-xl bg-accent flex items-center justify-center text-black font-syne font-black text-lg">
+                            G
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-syne font-extrabold text-lg tracking-tight leading-none text-white">GYMNATION</span>
+                            <span class="text-[9px] text-accent tracking-widest uppercase font-semibold">The Fitness Hub</span>
+                        </div>
+                    </a>
+                    <p class="text-textMuted text-sm leading-relaxed mb-6">
+                        Surat's elite fitness destination on Bhatar Road, offering top-tier strength training and expert coaching.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="https://wa.me/918511031349" target="_blank" class="w-10 h-10 rounded-xl bg-surface border border-zinc-800 flex items-center justify-center text-accent hover:bg-zinc-800 transition-colors">
+                            <i data-lucide="message-square" class="w-4 h-4"></i>
+                        </a>
+                        <a href="tel:+918511031349" class="w-10 h-10 rounded-xl bg-surface border border-zinc-800 flex items-center justify-center text-accent hover:bg-zinc-800 transition-colors">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-syne font-bold text-white text-base mb-4">Quick Links</h4>
+                    <ul class="space-y-2.5 text-sm text-textMuted">
+                        <li><a href="#services" class="hover:text-accent transition-colors">Services & Programs</a></li>
+                        <li><a href="#why-us" class="hover:text-accent transition-colors">Why Choose Us</a></li>
+                        <li><a href="#about" class="hover:text-accent transition-colors">About Gymnation</a></li>
+                        <li><a href="#gallery" class="hover:text-accent transition-colors">Floor Showcase</a></li>
+                        <li><a href="#reviews" class="hover:text-accent transition-colors">Customer Reviews</a></li>
+                    </ul>
+                </div>
+
+                <!-- Programs -->
+                <div>
+                    <h4 class="font-syne font-bold text-white text-base mb-4">Fitness Zones</h4>
+                    <ul class="space-y-2.5 text-sm text-textMuted">
+                        <li><span class="hover:text-accent transition-colors">Strength & Conditioning</span></li>
+                        <li><span class="hover:text-accent transition-colors">Personal Training</span></li>
+                        <li><span class="hover:text-accent transition-colors">Cardio Equipment</span></li>
+                        <li><span class="hover:text-accent transition-colors">Weight Management</span></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Hours -->
+                <div>
+                    <h4 class="font-syne font-bold text-white text-base mb-4">Timing & Location</h4>
+                    <p class="text-sm text-textMuted mb-2">Mon - Sat: 6:00 AM - 10:00 PM</p>
+                    <p class="text-sm text-textMuted mb-4">Bhatar Rd, Athwa, Surat, Gujarat</p>
+                    <a href="https://www.google.com/maps/place/Gymnation+The+Fitness+Hub/data=!4m7!3m6!1s0x3be04e12b5559c9f:0x8e2fa90efed05ee5!8m2!3d21.1754722!4d72.8176487!16s%2Fg%2F11c3vz922w!19sChIJn5xVtRJO4DsR5V7Q_g6pL44?authuser=0&hl=en&g_ep=EgoyMDI2MDkwMS4wIJJjKgBIAVAD&rclk=1" target="_blank" class="text-accent text-sm font-semibold hover:underline inline-flex items-center gap-1">
+                        <span>View on Google Maps</span>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-zinc-800/85 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-textMuted">
+                <p>&copy; 2026 Gymnation The Fitness Hub. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-accent transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-accent transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SUCCESS MODAL POPUP -->
+    <div id="success-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-surface border border-zinc-800 p-8 rounded-3xl max-w-md w-full text-center relative">
+            <div class="w-16 h-16 rounded-full bg-accent/20 text-accent flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check-circle" class="w-8 h-8"></i>
+            </div>
+            <h3 class="font-syne font-bold text-2xl text-white mb-2">Trial Request Received!</h3>
+            <p class="text-textMuted text-sm mb-6">Thank you for reaching out to Gymnation. Our team will contact you shortly to confirm your free trial session.</p>
+            <button id="close-modal" class="w-full py-3.5 rounded-xl bg-accent text-black font-bold text-sm hover:bg-emerald-400 transition-all">
+                Got It, Thanks!
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT INTERACTIONS -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // FAQ Accordion
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('lucide-icon, svg');
+
+                // Toggle current
+                content.classList.toggle('hidden');
+                if (icon) {
+                    icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Form Submission & Success Modal
+        const trialForm = document.getElementById('trial-form');
+        const successModal = document.getElementById('success-modal');
+        const closeModal = document.getElementById('close-modal');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+
+        trialForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Processing...';
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                btnText.textContent = 'Submit Trial Request';
+                trialForm.reset();
+                successModal.classList.remove('hidden');
+                successModal.classList.add('flex');
+            }, 1000);
+        });
+
+        closeModal.addEventListener('click', () => {
+            successModal.classList.add('hidden');
+            successModal.classList.remove('flex');
+        });
+
+        successModal.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                successModal.classList.add('hidden');
+                successModal.classList.remove('flex');
+            }
+        });
+    </script>
+</body>
+</html>
